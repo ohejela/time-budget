@@ -1,5 +1,5 @@
 import { useState } from "react";
-function TaskRow({ name, priority, minutes }) {
+function TaskRow({ id, name, priority, minutes, onDelete }) {
     const [done, setDone] = useState(false);
   return (
     <div className={done ? 'task-row done' : 'task-row'}>
@@ -7,6 +7,7 @@ function TaskRow({ name, priority, minutes }) {
       <span className="task-name">{name}</span>
       <span className={`chip ${priority.toLowerCase()}`}>{priority}</span>
       <span className="task-time">{minutes} min</span>
+      <button className="delete-button" onClick={() => onDelete(id)}>Delete</button>
     </div>
   )
 }

@@ -15,6 +15,10 @@ function App() {
   function addTask(newTask){
     setTasks([...tasks, newTask]);
   }
+  function deleteTask(idToDelete){
+    setTasks(tasks.filter((task)=>task.id !== idToDelete))
+
+  }
   return (
     <div className="app">
       <Sidebar />
@@ -27,6 +31,7 @@ function App() {
     name={task.name}
     priority={task.priority}
     minutes={task.minutes}
+    onDelete = {deleteTask}
   />
 ))}
         <AddTaskForm onAdd={addTask} />
