@@ -109,3 +109,36 @@ font-weight: 600;
 color: var(--muted);
 text-decoration: line-through;
 }
+.add-form{
+  display: flex;
+  background-color: var(--surface);
+  gap: 12px;
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 720px;
+  margin-top: 24px;
+}
+.add-form input,
+.add-form select{
+  padding: 10px;
+  border: 1px solid var(--muted);
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+}
+.add-form input[type='text']{
+  flex:1;
+}
+.add-form input[type='number']{
+  width: 80px;
+}
+.add-form button{
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--accent);
+  color: var(--surface);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}

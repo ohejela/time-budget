@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import TaskRow from './components/taskrow';
 import Sidebar from './components/sidebar';
+import AddTaskForm from './components/AddTaskForm';
 
-const tasks = [
+const initialTasks = [
   { id:1, name: "Data structures assignment", priority: "High", minutes: 45 },
   { id:2, name: 'Codesignal Intro to React', priority: "High", minutes: 45 },
   { id:3, name: 'Assembler language Project 1', priority: "Medium", minutes: 45},
@@ -9,6 +11,10 @@ const tasks = [
   { id:5, name: 'Research for my masters degree', priority: "Low", minutes: 45}
 ]
 function App() {
+  const [tasks, setTasks] = useState(initialTasks);
+  function addTask(newTask){
+    setTasks([...tasks, newTask]);
+  }
   return (
     <div className="app">
       <Sidebar />
@@ -22,7 +28,9 @@ function App() {
     priority={task.priority}
     minutes={task.minutes}
   />
-))}      </main>
+))}
+        <AddTaskForm onAdd={addTask} />
+      </main>
     </div>
   )
 }
