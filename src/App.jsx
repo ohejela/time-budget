@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import TaskRow from './components/taskrow';
 import Sidebar from './components/sidebar';
 import AddTaskForm from './components/AddTaskForm';
@@ -11,7 +11,13 @@ const initialTasks = [
   { id:5, name: 'Research for my masters degree', priority: "Low", minutes: 45}
 ]
 function App() {
-  const [tasks, setTasks] = useState(initialTasks);
+  const [tasks, setTasks] = useState(() => {
+    const saved = localStorage.getItem("tasks")
+    return saved ? JSON.parse(saved) : initialTasks
+  })
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks))
+  }, [tasks])
   function addTask(newTask){
     setTasks([...tasks, newTask]);
   }
