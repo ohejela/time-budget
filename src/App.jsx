@@ -32,6 +32,7 @@ function App() {
     priority={task.priority}
     minutes={task.minutes}
     onDelete = {deleteTask}
+    id={task.id} 
   />
 ))}
         <AddTaskForm onAdd={addTask} />
