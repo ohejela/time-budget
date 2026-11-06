@@ -155,3 +155,28 @@ text-decoration: line-through;
 .delete-button:hover{
   color: var(--priority-high);
 }
+
+.today-header{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 720px;
+}
+
+.today-header h1{
+  margin: 0;
+}
+.date-line{
+  color: var(--muted);
+  margin-top: 4px;
+}
+.add-task-button{
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--accent);
+  color: var(--surface);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}

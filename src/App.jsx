@@ -18,8 +18,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks))
   }, [tasks])
+  const [showForm, setShowForm]= useState(false)
   function addTask(newTask){
     setTasks([...tasks, newTask]);
+    setShowForm(false)
   }
   function deleteTask(idToDelete){
     setTasks(tasks.filter((task)=>task.id !== idToDelete))
@@ -29,8 +31,22 @@ function App() {
     <div className="app">
       <Sidebar />
       <main className="main">
-        <h1>Time budget</h1>
-        <p>Welcome to your time budget tracker!</p>
+        <header className ="today-header">
+          <div>
+            <h1>Today</h1>
+            <p className="date-line">
+              {new Date().toLocaleDateString("en-US", {
+                weekday: "long",
+                month: "long",
+                day: "numeric"
+              })}
+            </p>
+          </div>
+          <button className="add-task-button" onClick={() => setShowForm(!showForm)}>
+            </button>
+          </header>
+
+          {showForm && <AddTaskForm onAdd={addTask} />}
 {tasks.map((task) => (
   <TaskRow
     key={task.id}
@@ -41,7 +57,7 @@ function App() {
     id={task.id} 
   />
 ))}
-        <AddTaskForm onAdd={addTask} />
+
       </main>
     </div>
   )
