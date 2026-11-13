@@ -180,3 +180,56 @@ text-decoration: line-through;
   font-weight: 600;
   cursor: pointer;
 }
+.content{
+  display: flex;
+  gap:24px;
+  align-items:flex-start;
+  margin-top: 24px;
+}
+.task-list{
+  flex: 1;
+  max-width: 720px;
+}
+.budget-card{
+  background-color: var(--surface);
+  border-radius: 12px;
+  padding: 20px;
+  width: 300px;
+}
+.budget-label {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+.budget-total {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 4px 0 16px;
+}
+
+.budget-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.progress-track {
+  background-color: rgba(110, 118, 129, 0.2);
+  border-radius: 999px;
+  height: 8px;
+  margin-top: 16px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background-color: var(--accent);
+  height: 100%;
+  border-radius: 999px;
+}
+
+.budget-percent {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 8px;
+}

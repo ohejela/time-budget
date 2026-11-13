@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import TaskRow from './components/taskrow';
 import Sidebar from './components/sidebar';
 import AddTaskForm from './components/AddTaskForm';
+import BudgetCard from './components/BudgetCard';
 
 const initialTasks = [
   { id:1, name: "Data structures assignment", priority: "High", minutes: 45 },
@@ -19,6 +20,7 @@ function App() {
     localStorage.setItem("tasks", JSON.stringify(tasks))
   }, [tasks])
   const [showForm, setShowForm]= useState(false)
+  const [budget,setBudget] = useState(300)
   function addTask(newTask){
     setTasks([...tasks, newTask]);
     setShowForm(false)
@@ -27,6 +29,7 @@ function App() {
     setTasks(tasks.filter((task)=>task.id !== idToDelete))
 
   }
+  const planned = tasks.reduce((sum, task) => sum + task.minutes, 0)
   return (
     <div className="app">
       <Sidebar />
@@ -43,21 +46,29 @@ function App() {
             </p>
           </div>
           <button className="add-task-button" onClick={() => setShowForm(!showForm)}>
+            +Add Task
             </button>
           </header>
 
           {showForm && <AddTaskForm onAdd={addTask} />}
-{tasks.map((task) => (
-  <TaskRow
-    key={task.id}
-    name={task.name}
-    priority={task.priority}
-    minutes={task.minutes}
-    onDelete = {deleteTask}
-    id={task.id} 
-  />
-))}
+          <div className="content">
+            <section className="task-list">
+              {tasks.map((task) => (
+                <TaskRow
+                  key={task.id}
+                  name={task.name}
+                  priority={task.priority}
+                  minutes={task.minutes}
+                  onDelete = {deleteTask}
+                  id={task.id} 
+                />
+              ))} 
+            </section>
+            <BudgetCard budget={budget} planned={planned} />
 
+          </div>
+
+          
       </main>
     </div>
   )
