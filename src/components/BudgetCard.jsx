@@ -22,6 +22,10 @@ function BudgetCard({ budget, planned }) {
                 <span>Free</span>
                 <span>{formatDuration(free)}</span>
             </div>
+            <div className="budget-row">
+                <span>Buffer Left</span>
+                <span>{formatDuration(bufferleft)}</span>
+            </div>
             <div className ="progress-track">
                 <div className ="progress-fill" style={{ width:`${percent}%`}}></div>
             </div>
